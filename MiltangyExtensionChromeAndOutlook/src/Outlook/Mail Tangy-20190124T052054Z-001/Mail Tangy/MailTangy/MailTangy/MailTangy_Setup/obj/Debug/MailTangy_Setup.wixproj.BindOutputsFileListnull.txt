@@ -1,0 +1,2 @@
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.msi
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.wixpdb

@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MailTangy.Styles">
+
+    <!-- Regular Button -->
+    <Style TargetType="{x:Type Button}" x:Key="RegularButtonStyle">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="ControlTemp" TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="ButtonBorder" CornerRadius="2">
+                            <Border.Background>
+                                <SolidColorBrush x:Name="BackColor" Color="{StaticResource DropDownBackground}"/>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   Padding="5" x:Name="ButtonText"
+                                   Foreground="White" SnapsToDevicePixels="True"
+                                   FontWeight="{TemplateBinding FontWeight}"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Text="{TemplateBinding Content}"/>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Button.IsMouseOver" Value="True"/>
+                                <Condition Property="Button.IsPressed" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard AccelerationRatio="0.4" DecelerationRatio="0.4">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="BackColor" Storyboard.TargetProperty="Color">
+                                            <SplineColorKeyFrame KeyTime="00:00:0.13" Value="{StaticResource DropDownBackgroundHover}">
+                                            </SplineColorKeyFrame>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard AccelerationRatio="0.4" DecelerationRatio="0.4">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="BackColor" Storyboard.TargetProperty="Color">
+                                            <SplineColorKeyFrame KeyTime="00:00:0.13" Value="{StaticResource DropDownBackground}">
+                                            </SplineColorKeyFrame>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ControlForAbhinovP.Styles">
+
+    <Color x:Key="MainWindowBackground">#edeff3</Color>
+    <SolidColorBrush x:Key="MainWindowBackgroundBrush" Color="{StaticResource MainWindowBackground}"/>
+
+    <Color x:Key="DropDownBackground">#6C757D</Color>
+    <SolidColorBrush x:Key="DropDownBackgroundBrush" Color="{StaticResource DropDownBackground}"/>
+
+    <Color x:Key="DropDownBackgroundHover">#5A6268</Color>
+    <SolidColorBrush x:Key="DropDownBackgroundHoverBrush" Color="{StaticResource DropDownBackgroundHover}"/>
+
+</ResourceDictionary>

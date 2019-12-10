@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="MailTangy Add-In" Language="1033" Version="1.0.0.0" Manufacturer="Point5Nyble" UpgradeCode="208f19d0-9610-4ef1-ab84-d0d0b0753620">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes"/>
+
+    <Feature Id="ProductFeature" Title="MailTangy Add-In" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="RegistryComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+
+    <Property Id="ARPPRODUCTICON"
+     Value="myIcon" />
+    <Property Id="ARPCOMMENTS"
+     Value="(c) Point5Nyble" />
+    <Property Id="ARPNOREPAIR"
+     Value="1" />
+    <Property Id="ARPCONTACT"
+     Value="point5nyble@gmail.com" />
+    <Property Id="ARPHELPLINK" Value="http://www.point5nyble.com/"/>
+
+  </Fragment>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Point5Nyble" >
+          <Directory Id="PRODUCTNAME" Name="MailTangy"/>
+        </Directory>
+      </Directory>
+
+    </Directory>
+
+
+
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="RegistryComponents"
+       Directory="PRODUCTNAME">
+      <Component Id="CMP_RegDesc"
+      Guid="DA7AFC67-11B5-4E01-A726-0B557C43BAC7">
+        <RegistryValue Id="Description"
+        KeyPath="yes"
+        Action="write"
+        Root="HKCU"
+        Key="Software\Microsoft\Office\Outlook\Addins\MailTangy"
+        Name="Description"
+        Value="AddIn for Working with SalesForce Tickets in Outlook"
+        Type="string" />
+      </Component>
+
+      <Component Id="CMP_RegFrName"
+         Guid="9EFD5810-7F0F-4537-B57A-AD2946DEDC72">
+        <RegistryValue Id="FriendlyName"
+        KeyPath="yes"
+        Action="write"
+        Root="HKCU"
+        Key="Software\Microsoft\Office\Outlook\Addins\MailTangy"
+        Name="FriendlyName"
+        Value="MailTangy Addin"
+        Type="string" />
+      </Component>
+
+      <Component Id="CMP_RegLoadBehaviour"
+        Guid="FDE5CA54-CB48-4381-8A2D-570B0133E00F">
+        <RegistryValue Id="LoadBehavior"
+        KeyPath="yes"
+        Action="write"
+        Root="HKCU"
+        Key="Software\Microsoft\Office\Outlook\Addins\MailTangy"
+        Name="LoadBehavior"
+        Value="3"
+        Type="integer" />
+      </Component>
+
+      <Component Id="CMP_RegManifest"
+         Guid="D8C89B77-9A97-4818-A152-F2458DAC8342">
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Office\Outlook\Addins\MailTangy">
+          <RegistryValue Id="ManifestPath"
+            KeyPath="yes"
+            Name="Manifest"
+            Action="write"
+            Value="file:///[PRODUCTNAME]MailTangy.vsto|vstolocal"
+            Type="string"/>
+        </RegistryKey>
+      </Component>
+      <Component Id="FeaturesEnabled"
+      Guid="78D2BEA6-59ED-4D86-AD82-0CC4637AB307">
+        <RegistryValue Id="HaveFeaturesSubmitted"
+        KeyPath="yes"
+        Action="write"
+        Root="HKCU"
+        Key="Software\MailTangy"
+        Name="HaveFeaturesSubmitted"
+        Value="False"
+        Type="string" />
+      </Component>
+      <Component Id="BrowserEmulation"
+      Guid="6A799471-32C0-4F47-A149-BF89DAE6CDDF">
+        <RegistryValue Id="IEEmulation"
+        KeyPath="yes"
+        Action="write"
+        Root="HKCU"
+        Key="Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION"
+        Name="OUTLOOK.EXE"
+        Value="11000"
+        Type="integer" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="PRODUCTNAME">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+
+
+      <Component Id="CMP_ToolCommonUtilities" Guid="8185254D-8566-4324-91EE-506ADA56BA41">
+        <File Id="FILE_Installfolder_ToolCommonUtilities"
+        Source="$(var.MyDir)\Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+        KeyPath="yes" />
+      </Component>
+
+      <Component Id="CMP_ToolCommonUtilitiesxml" Guid="5FAE7C05-12FB-4E2E-A7A8-ADB621E7E234">
+        <File Id="FILE_Installfolder_ToolCommonUtilitiesxml"
+        Source="$(var.MyDir)\Microsoft.Office.Tools.Common.v4.0.Utilities.xml"
+        KeyPath="yes" />
+      </Component>
+
+
+      <Component Id="CMP_ToolOutlookUtilities" Guid="1AD42494-FFD4-45E2-8E71-C3BCF04487A6">
+        <File Id="FILE_Installfolder_ToolOutlookUtilities"
+        Source="$(var.MyDir)\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll"
+        KeyPath="yes" />
+      </Component>
+
+      <Component Id="CMP_ToolOutlookUtilitiesxml" Guid="B216769B-F942-4EBA-A7A2-A4D7496079DF">
+        <File Id="FILE_Installfolder_ToolOutlookUtilitiesxml"
+        Source="$(var.MyDir)\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml"
+        KeyPath="yes" />
+      </Component>
+      <Component Id="CMP_JSONxml" Guid="253D2D51-B835-4D00-98E1-5BD23622E805">
+        <File Id="FILE_Installfolder_JSONxml"
+        Source="$(var.MyDir)\Newtonsoft.Json.xml"
+        KeyPath="yes" />
+      </Component>
+      <Component Id="CMP_JSON" Guid="B93121FB-03CA-4AF2-8DEC-E963378EE941">
+        <File Id="FILE_Installfolder_JSON"
+        Source="$(var.MyDir)\Newtonsoft.Json.dll"
+        KeyPath="yes" />
+      </Component>
+
+      <Component Id="CMP_NewMail_AddinDLL" Guid="047E649C-B44C-4822-860B-B7B3FC0A75DF">
+        <File Id="FILE_Installfolder_CFDLL"
+        Source="$(var.MyDir)\MailTangy.dll"
+        KeyPath="yes" />
+      </Component>
+      <Component Id="CMP_NewMail_AddinDLLManifest" Guid="02CF4C55-4F9A-46FD-868E-BD938283370E">
+        <File Id="FILE_Installfolder_CFDLLManifest"
+        Source="$(var.MyDir)\MailTangy.dll.Manifest"
+        KeyPath="yes" />
+      </Component>
+      <Component Id="CMP_NewMail_Addinvsto" Guid="16B54B5E-DB1A-4A1D-9792-02CA2E77931F">
+        <File Id="FILE_Installfolder_CFVSTO"
+        Source="$(var.MyDir)\MailTangy.vsto"
+        KeyPath="yes" />
+      </Component>
+
+      <Component Id="CMP_appConfig" Guid="1AA988E9-F4E5-457F-99B2-28DE3DE64CCF">
+        <File Id="FILE_Installfolder_appConfig"
+        Source="$(var.MyDir)\MailTangy.dll.config"
+        KeyPath="yes" />
+      </Component>
+
+    </ComponentGroup>
+  </Fragment>
+</Wix>

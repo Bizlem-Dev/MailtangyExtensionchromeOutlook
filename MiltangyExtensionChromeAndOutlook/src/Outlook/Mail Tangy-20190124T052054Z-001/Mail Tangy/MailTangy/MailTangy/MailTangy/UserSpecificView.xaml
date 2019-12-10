@@ -1,0 +1,508 @@
+﻿<UserControl x:Class="MailTangy.UserSpecificView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailTangy"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:HideConverter x:Key="conv" />
+        <local:HideLabel x:Key="labelConverter"/>
+        <local:ShowLeadCaseConverter x:Key="leadcase"/>
+        <local:ImageConverter x:Key="imageConv" />
+        <DataTemplate x:Key="LeadTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Path=Subject}"
+                           Foreground="Black"
+                           FontSize="13"
+                           TextWrapping="Wrap"/>
+                <TextBlock Text="&#xF0E3;"
+                           FontSize="20"
+                           Grid.Column="1"
+                           FontFamily="Segoe MDL2 Assets"/>
+                <TextBlock Text="{Binding Path=ReceivedDate}"
+                           Grid.Column="2"
+                           FontSize="13"
+                           TextWrapping="Wrap"/>
+
+            </Grid>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Visibility="{Binding ShowTemplateSection}"
+                    Orientation="Horizontal"
+                    Background="Orange">
+            <TextBlock Text="Select Template"
+                       Foreground="White"
+                       FontWeight="Medium"
+                       Margin="10"/>
+            <ComboBox Background="#FF3074AE"
+                  Width="140"
+                  x:Name="TemplateComboBox"
+                  Text="Select Template"
+                  IsEditable="True"
+                  ItemsSource="{Binding Templates.data}"
+                  
+                  DisplayMemberPath="temp_name"
+                  SelectionChanged="ComboBox_SelectionChanged"
+                  Margin="10">
+
+            </ComboBox>
+        </StackPanel>
+        
+        <DockPanel x:Name="LogoutPanel"
+                   Grid.Row="1"
+                   Background="#FF3072AB">
+            <TextBlock Text="{Binding LeadOrCase}"
+                       DockPanel.Dock="Left"
+                       FontSize="15"
+                       Margin="10,0,0,0"
+                       VerticalAlignment="Center"
+                       Foreground="White"/>
+            
+            <Button x:Name="btnLogout"  
+                    DockPanel.Dock="Right"
+                    Foreground="White"
+                    Margin="0,3,3,3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    BorderThickness="0"
+                    Height="30"
+                    Width="60"
+                    Click="BtnLogout_Click"
+                    Background="Red">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xE8DE;"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Segoe MDL2 Assets" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="180"/>
+                                   
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock Text="Logout"
+                                   FontWeight="Bold"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="btnAllTasks"
+                    Foreground="White"
+                    Margin="0,3,3,3"
+                    DockPanel.Dock="Right"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0"
+                    Height="30"
+                    FontWeight="Bold"
+                    Click="btnAllTasks_Click"
+                    Background="Red"
+                    Content="All Tasks"
+                    Width="60"/>
+        </DockPanel>
+        <Grid Grid.Row="2" Grid.RowSpan="4"
+              Opacity="1" Panel.ZIndex="1" Background="LightGreen"
+              Visibility="{Binding ShowTasksPane}">
+            <StackPanel  x:Name="TasksList">
+                <StackPanel Orientation="Horizontal" Background="#FF3074AE">
+                    <TextBlock VerticalAlignment="Center"
+                           Margin="5"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="White"
+                           Text="Tasks"/>
+                    <Button x:Name="btnBack"                     
+                    Foreground="White"
+                    Margin="190,3,3,3"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    BorderThickness="0"
+                    Height="30"
+                    Width="60"
+                    Click="btnBack_Click"
+                    Background="#FF3074AE">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE8DE;"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Segoe MDL2 Assets"
+                                    FontWeight="Bold"       >
+
+                                </TextBlock>
+                                <TextBlock Text="Back"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="No Tasks Found"
+                           FontWeight="Bold"
+                           Margin="10,10,10,0"
+                           FontSize="14"
+                           Visibility="{Binding ShowNoTasksMessage}"/>
+                <ListBox HorizontalContentAlignment="Stretch" x:Name="AllTasksList"
+                         ItemsSource="{Binding AllTasks.taskdata }"
+                         Height="350"
+                         Visibility="{Binding HideTasksList}"
+                         Background="LightGreen"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="0,0,0,2"
+                                    Margin="0,5,0,0"
+                                    BorderBrush="White">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="Subject:" FontWeight="Bold"
+                                               Margin="5"/>
+                                        <TextBlock Text="{Binding Subject }"
+                                               Margin="5"
+                                               FontWeight="Bold"
+                                               Foreground="Blue"/>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"
+                                            Grid.Row="1" Grid.ColumnSpan="2" >
+                                        <TextBlock Text="Email:" FontWeight="Bold"
+                                               Margin="5"/>
+                                        <TextBlock Text="{Binding Name }"
+                                               Margin="5"/>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" >
+                                        <TextBlock Text="DueDate:" FontWeight="Bold"
+                                               Margin="5"/>
+                                        <TextBlock Text="{Binding DueDate }"
+                                               Margin="5"/>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" 
+                                            Grid.Column="1" >
+                                        <TextBlock Text="Status:" FontWeight="Bold"
+                                               Margin="5"/>
+                                        <TextBlock Text="{Binding Status }"
+                                               Margin="5"/>
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="3"
+                                            Grid.ColumnSpan="2">
+                                        <TextBlock Text="Priority:" FontWeight="Bold"
+                                               Margin="5"/>
+                                        <TextBlock Text="{Binding Priority }"
+                                                   Margin="5"/>
+
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="SocialProfile"
+              Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Ellipse Height="40" x:Name="profileImage"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center"
+                         Margin="10,5,0,0"
+                      
+                         Width="40">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding UserProfileImagePath}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="{Binding UserName}"
+                           Margin="-80,5,0,0"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="emailId" 
+                           Grid.Row="1"
+                           FontSize="13"
+                           Margin="10,5,10,10"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Text="{Binding UserEmail}"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" x:Name="sentiments">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                
+                <Image Source="Resources/smile_happy.png"
+                   Height="35"
+                   Margin="5"/>
+                <Label Content="{Binding PositivePercentage}" 
+                       HorizontalAlignment="Center"
+                       FontSize="18"
+                           />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1">
+                
+                <Image Source="Resources/smile_confused.png"
+                   Height="35"
+                   Margin="5"/>
+                <Label Content="{Binding NeutralPercentage}" 
+                       HorizontalAlignment="Center"
+                       FontSize="18"
+                           />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="2">
+                
+                <Image Source="Resources/smile_sad.png"
+                   Height="35"
+                   Margin="5"/>
+                <Label Content="{Binding NegativePercentage}" 
+                       HorizontalAlignment="Center"
+                       FontSize="18"
+                           />
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="0,2,0,2"
+              Visibility="{Binding OpenCaseCount,Converter={StaticResource labelConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="{Binding OpenCaseCount }"
+                   HorizontalContentAlignment="Left"
+                   Height="25"                  
+                   VerticalContentAlignment="Center"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Center"
+                   FontSize="12"
+                   Foreground="Blue" FontWeight="Regular"
+                   Background="AliceBlue"/>
+            <Label Content="{Binding ClosedCaseCount}"
+                   Grid.Column="1"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"
+                       Height="25"                 
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center"
+                       FontSize="12"
+                       Foreground="Blue" FontWeight="Regular"
+                       Background="AliceBlue"/>
+        </Grid>
+        <Grid x:Name="EmailActivity" 
+              Visibility="{Binding LeadOrCase, 
+              Converter={StaticResource leadcase},
+            ConverterParameter=CaseWindow}"
+              Grid.Row="5">
+            <Popup IsOpen="{Binding ShowPopup}"
+                   Width="300"
+                   Placement="Relative"
+                   PlacementTarget="{Binding ElementName=EmailActivity}">
+                
+                    <StackPanel Margin="0" Background="White">
+                    <Label x:Name="ClosePopup" Background="AliceBlue" Foreground="Blue"
+                           HorizontalAlignment="Stretch"
+                           FontSize="15"
+                           HorizontalContentAlignment="Right"
+                           MouseDown="ClosePopup_MouseDown">
+                        x</Label>
+                    <TextBlock FontSize="16">
+                        <Run Text="Case Number:"/>
+                        <Run Text="{Binding CloseCaseNumber}"/>
+                            
+                        </TextBlock>
+                    <Border Margin="0,5,0,5" BorderThickness="1" BorderBrush="Gray"/>
+                    <TextBlock Text="Please Specify the reason to close the case."
+                               TextWrapping="Wrap"
+                               FontWeight="SemiBold"/>
+                    <TextBox MaxLines="5"
+                             x:Name="CaseClosureReason"
+                             Margin="0,10,0,0"
+                             Height="70"/>
+                    <Button x:Name="BtnOKClose"
+                            Content="OK"
+                            Width="40"
+                            Margin="5"
+                            Click="BtnOKClose_Click"/>
+                    
+                </StackPanel>
+               
+                
+            </Popup>
+            <StackPanel Background="#FF3074AE" x:Name="CasesList">
+                <TextBlock VerticalAlignment="Center"
+                                   Margin="5"
+                                   Foreground="White"
+                       Text="Cases"/>
+                
+                <ListBox HorizontalContentAlignment="Stretch"
+                         x:Name="emailListBox"
+                         ItemsSource="{Binding EmailBasedCases }"
+                         Height="280"                        
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Name="CaseListItem" Margin="-5,0,-5,0">
+                                <Grid Margin="5,0,5,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Subject: " FontWeight="Bold" Margin="10,10,0,0"/>
+                                        <TextBlock TextWrapping="Wrap"
+                                               Text="{Binding CaseSubject}"
+                                                Margin="1,10,0,0" Foreground="Blue"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                        <TextBlock  Text="CaseNumber: " FontWeight="Bold" Margin="10,5,0,0"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding CaseNumber}"
+                                                Margin="1,5,0,0"/>
+                                        <TextBlock  Text="Status: " FontWeight="Bold" Margin="10,5,0,0"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding CaseStatus}"
+                                                Margin="1,5,0,0"/>
+                                    </StackPanel>
+                                    
+                                </Grid>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                    <Button x:Name="BtnCloseCase"
+                                        Content="Close"
+                                        Width="60"
+                                        Click="BtnCloseCase_Click"
+                                        HorizontalAlignment="Left"
+                                        Margin="10,5,0,2"
+                                        Foreground="White"
+                                        Background="Red"/>
+                                    <Image Height="25"
+                                           Margin="1,5,0,2"
+                                           Width="25"
+                                           Source="{Binding Sentiment_Output,Converter={StaticResource imageConv}}">
+                                        
+                                    </Image>
+                                    <Label Content="&#xF0E3;"
+                                           Margin="1,5,0,2"
+                                           FontSize="20"
+                                           Visibility="{Binding Summerizer_Output,Converter={StaticResource conv}}"
+                                           ToolTip="{Binding Summerizer_Output}"
+                                           FontFamily="Segoe MDL2 Assets">
+                                        <!--<Label.ToolTip>
+                                            <StackPanel Visibility="{Binding Summerizer_Output,Converter={StaticResource conv}}">
+                                                <TextBlock Text="{Binding Summerizer_Output}"/>
+                                            </StackPanel>
+                                            
+                                        </Label.ToolTip>-->
+                                    </Label>
+                                    <Image Height="25" x:Name="Autoreplied"
+                                           Margin="1,5,0,2"
+                                           Width="25"
+                                           Visibility="Hidden"
+                                           Source="Resources/Autoreplied.png">
+                                        <!--<Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding CaseStatus}" 
+                                                                 Value="AutoReplied">
+                                                        <Setter Property="Visibility"  Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>-->
+                                    </Image>
+                                </StackPanel>
+                                
+                            </StackPanel>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelectedCase}"  Value="true">
+                                    <Setter TargetName="CaseListItem" Property="Background" Value="#90EE90"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CaseStatus }" Value="Escalated">
+                                    <Setter TargetName="CaseListItem" Property="Background" Value="#f39090"/>
+                                </DataTrigger>
+                                
+                                <DataTrigger Binding="{Binding CaseStatus}"  Value="AutoReplied">
+                                    <Setter TargetName="Autoreplied" Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="LeadWindow" Grid.Row="5"
+              Visibility="{Binding LeadOrCase, Converter={StaticResource leadcase},ConverterParameter=LeadWindow}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Lead Mail"
+                       HorizontalContentAlignment="Center"
+                   Height="30"                 
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center"
+                       FontSize="15"
+                       Foreground="Blue" FontWeight="SemiBold"
+                       Background="AliceBlue"/>
+            <ListBox HorizontalContentAlignment="Stretch"
+                     Grid.Row="1"
+                     VerticalAlignment="Top"
+                     x:Name="LeadMailListbox"                     
+                     ItemsSource="{Binding EmailBasedLeads }"
+                     Height="250" ItemTemplate="{StaticResource LeadTemplate}"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            </ListBox>
+
+        </Grid>
+    </Grid>
+    
+</UserControl>

@@ -1,0 +1,99 @@
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewCaseControl.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewItemFrame.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewLeadControl.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewTaskControl.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\FeatureListControl.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MainPane.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\OpenCaseControl.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\SaveFeatures.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\SearchResults.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\UserSpecificView.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy_MarkupCompile.cache
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy_MarkupCompile.lref
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\MailTangy.dll.config
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\MailTangy.dll
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\MailTangy.pdb
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\MailTangy.dll.manifest
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\MailTangy.vsto
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Newtonsoft.Json.dll
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Newtonsoft.Json.xml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewCaseControl.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewItemFrame.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewLeadControl.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewTaskControl.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\FeatureListControl.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MainPane.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\OpenCaseControl.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\SaveFeatures.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\SearchResults.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\Styles\Buttons.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\Styles\Colors.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\Styles\Dropdown.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\Styles\Scrollbar.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\UserSpecificView.baml
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.g.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.CreateNewItemWindow.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.DisplaySearchResultsWindows.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.MailTangyContainer.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.LoginCustomPane.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.MailTangyRibbon.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.Properties.Resources.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.LoginForm.resources
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.csproj.GenerateResource.Cache
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.dll
+C:\Users\abhin\Desktop\MailTangy\MailTangy\obj\Debug\MailTangy.pdb
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\MailTangy.dll.config
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\MailTangy.dll
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\MailTangy.pdb
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\MailTangy.dll.manifest
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\MailTangy.vsto
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.dll
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Newtonsoft.Json.dll
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Newtonsoft.Json.xml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\bin\Debug\Microsoft.Office.Tools.Outlook.v4.0.Utilities.xml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.csprojResolveAssemblyReference.cache
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewCaseControl.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewItemFrame.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewLeadControl.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewTaskControl.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\FeatureListControl.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MainPane.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\OpenCaseControl.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\SaveFeatures.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\SearchResults.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\UserSpecificView.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy_MarkupCompile.cache
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy_MarkupCompile.lref
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewCaseControl.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewItemFrame.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewLeadControl.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\CreateItemsControls\NewTaskControl.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\FeatureListControl.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MainPane.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\OpenCaseControl.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\SaveFeatures.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\SearchResults.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\Styles\Buttons.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\Styles\Colors.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\Styles\Dropdown.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\Styles\Scrollbar.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\UserSpecificView.baml
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.g.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.CreateNewItemWindow.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.DisplaySearchResultsWindows.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.MailTangyContainer.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.LoginCustomPane.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.MailTangyRibbon.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.Properties.Resources.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.LoginForm.resources
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.csproj.GenerateResource.Cache
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.dll
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy\obj\Debug\MailTangy.pdb

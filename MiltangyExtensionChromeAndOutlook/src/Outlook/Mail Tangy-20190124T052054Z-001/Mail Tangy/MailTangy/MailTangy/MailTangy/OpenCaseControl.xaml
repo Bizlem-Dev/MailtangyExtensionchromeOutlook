@@ -1,0 +1,333 @@
+﻿<UserControl x:Class="MailTangy.OpenCaseControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailTangy"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:EnableDisableConverter x:Key="enableNext"/>
+        <local:EnableDisablePreConverter x:Key="enablePrevious"/>
+
+        <local:HideNavigationConverter x:Key="hideNavigation"/>
+        <Style TargetType="Button" x:Key="NavButton">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="White"/>
+            
+        </Style>
+        <DataTemplate x:Key="OpenCaseTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=CaseSubject}"
+                           Foreground="Blue"
+                           TextWrapping="Wrap"/>
+                <!--<TextBlock Text=" - "/>-->
+                <TextBlock Text="{Binding Path=DateTimeOpened}"
+                           FontWeight="Bold"/>
+           
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="ClosedCaseTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=CaseSubject}"
+                           Foreground="Blue"
+                           TextWrapping="Wrap"/>
+                <!--<TextBlock Text=" - "/>-->
+                <TextBlock Text="{Binding Path=DateTimeClosed}"
+                           FontWeight="Bold"/>
+
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="AutpRepliedCaseTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Subject}"
+                           TextWrapping="Wrap"
+                           Foreground="Blue"/>
+                <!--<TextBlock Text=" - "/>-->
+                <TextBlock Text="{Binding Path=ReceivedDate}"
+                           FontWeight="SemiBold"
+                           FontSize="10"/>
+
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--
+        <ComboBox Height="30" Width="60" FontSize="14"
+                  x:Name="NewItemCb"
+                  HorizontalAlignment="Left"
+                  Margin="10,5,0,0"
+                  HorizontalContentAlignment="Left"
+                  VerticalContentAlignment="Center"
+                  Background="Black" SelectedIndex="0"
+                  DropDownClosed="ComboBox_DropDownClosed"
+                  >
+            <ComboBoxItem>New</ComboBoxItem>
+            <ComboBoxItem >Case</ComboBoxItem>
+            <ComboBoxItem>Lead</ComboBoxItem>
+            <ComboBoxItem>Task</ComboBoxItem>
+        </ComboBox>
+        -->
+        <Expander IsExpanded="False"
+                  Grid.Row="1"
+                  x:Name="OpenCasesExpander"
+                  Background="#FF3074AE"
+                  Foreground="White"
+                  Header="{Binding OpenCasesHeader}"
+                  Margin="10,5,0,0" Expanded="OpenCases_Expanded">
+            <Border BorderBrush="Red"
+                    Background="White"
+                    BorderThickness="0"
+                    >
+                <StackPanel>
+                <ListBox HorizontalContentAlignment="Stretch"
+                         
+                         BorderThickness="0"
+                         ItemsSource="{Binding OpenCasesSubset}"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ItemTemplate="{StaticResource OpenCaseTemplate}"/>
+                <StackPanel Orientation="Horizontal"
+                                Background="White"
+                                HorizontalAlignment="Center"
+                            Visibility="{Binding OpenCasesSubset,Converter={StaticResource hideNavigation}}">
+                        <Button x:Name="OPreviousPage"                           
+                            Click="OPreviousPage_Click"
+                            Style="{StaticResource NavButton}"
+                            Content="&#xE016;">
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enablePrevious}">
+                                    <Binding ElementName="OPageNo" Path="Content"/>
+                                    <Binding ElementName="OpenCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+                        <Label Content="{Binding OPageNumber}"
+                           HorizontalContentAlignment="Center"
+                           Foreground="Black"
+                           Width="30"
+                           x:Name="OPageNo"
+                           Margin="3"/>
+                        <Label Content="Of"
+                           HorizontalContentAlignment="Center"
+                           Foreground="Black"
+                           Margin="0,3,0,3"/>
+                        <Label Content="{Binding OTotalPages}"
+                           HorizontalContentAlignment="Center"
+                           Foreground="Black"
+                           Width="30"
+                           x:Name="OTotalPageNo"
+                           Margin="3"/>
+                        <Button x:Name="ONextPage"
+                            Click="ONextPage_Click"
+                            Style="{StaticResource NavButton}"
+                            Content="&#xE017;">
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enableNext}">
+                                    <Binding ElementName="OPageNo" Path="Content"/>
+                                    <Binding ElementName="OpenCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Expander>
+
+        <Expander Grid.Row="2" x:Name="ClosedCasesExpander"
+                  Header="{Binding ClosedCasesHeader}" 
+                  IsExpanded="False"
+                  Background="#FF3074AE"
+                  Expanded="ClosedCasesExpander_Expanded"
+                  Foreground="White"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  Margin="10,5,0,0">
+            <Border BorderBrush="Green" BorderThickness="0"
+                    Background="White">
+                <StackPanel>
+                    <ListBox HorizontalContentAlignment="Stretch"
+                         ItemsSource="{Binding ClosedCasesSubset}"    
+                             BorderThickness="0"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ItemTemplate="{StaticResource ClosedCaseTemplate}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Background="White"
+                                HorizontalAlignment="Center"
+                                Visibility="{Binding ClosedCasesSubset,Converter={StaticResource hideNavigation}}">
+                        <Button x:Name="CPreviousPage"
+                                Click="CPreviousPage_Click"
+                                Style="{StaticResource NavButton}"
+                            Content="&#xE016;">
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enablePrevious}">
+                                    <Binding ElementName="CPageNo" Path="Content"/>
+                                    <Binding ElementName="ClosedCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+                        <Label Content="{Binding CPageNumber}"
+                               Width="30"
+                               HorizontalContentAlignment="Center"
+                               x:Name="CPageNo"
+                               Foreground="Black"
+                               Margin="3"/>
+                        <Label Content="Of"
+                               
+                               HorizontalContentAlignment="Center"
+                               Foreground="Black"
+                               Margin="0,3,0,3"/>
+                        <Label Content="{Binding CTotalPages}"
+                               Width="30"
+                               HorizontalContentAlignment="Center"
+                               x:Name="CTotalPageNo"
+                               Foreground="Black"
+                               Margin="3"/>
+                        <Button x:Name="CNextPage"
+                                Click="CNextPage_Click"
+                                Style="{StaticResource NavButton}"
+                            Content="&#xE017;">
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enableNext}">
+                                    <Binding ElementName="CPageNo" Path="Content"/>
+                                    <Binding ElementName="ClosedCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+                
+            </Border>
+        </Expander>
+        <Expander Grid.Row="3" x:Name="AutoRepliedCasesExpander"
+                  Header="{Binding AutoReplyCasesHeader}" 
+                  IsExpanded="False"
+                  Expanded="AutoRepliedCasesExpander_Expanded"
+                  Background="#FF3074AE"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  Foreground="White"
+                  Margin="10,5,0,0">
+            <Border BorderBrush="Yellow"
+                    Background="White"
+                    BorderThickness="0">
+                <StackPanel>
+                    <ListBox HorizontalContentAlignment="Stretch"
+                             BorderThickness="0"
+                         ItemsSource="{Binding AutoRepliedCasesSubset}"                                                 
+                         ItemTemplate="{StaticResource  OpenCaseTemplate}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Background="White"
+                                HorizontalAlignment="Center"
+                                Visibility="{Binding AutoRepliedCasesSubset,Converter={StaticResource hideNavigation}}">
+                        <Button x:Name="APreviousPage"
+                                Style="{StaticResource NavButton}"
+                                Content="&#xE016;"
+                                Click="APreviousPage_Click">
+
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enablePrevious}">
+                                    <Binding ElementName="APageNo" Path="Content"/>
+                                    <Binding ElementName="AutoRepliedCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+                        <Label Content="{Binding APageNumber}"
+                               Width="30"
+                               HorizontalContentAlignment="Center"
+                               x:Name="APageNo"
+                               Foreground="Black"
+                               Margin="3"/>
+                        <Label Content="Of"
+                               HorizontalContentAlignment="Center"
+                               Foreground="Black"
+                               Margin="0,3,0,3"/>
+                        <Label Content="{Binding ATotalPages}"
+                               Width="30"
+                               HorizontalContentAlignment="Center"
+                               x:Name="ATotalPageNo"
+                               Foreground="Black"
+                               Margin="3"/>
+                        <Button x:Name="ANextPage"
+                                Style="{StaticResource NavButton}"
+                                Content="&#xE017;"
+                                Click="ANextPage_Click">
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource enableNext}">
+                                    <Binding ElementName="APageNo" Path="Content"/>
+                                    <Binding ElementName="AutoRepliedCasesExpander" Path="Header"/>
+                                </MultiBinding>
+                            </Button.IsEnabled>
+                        </Button>
+
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Expander>
+        <Expander x:Name="custSentimentIndex"
+                  Grid.Row="4" 
+                  Background="#FF3074AE"
+                  IsExpanded="True"
+                  Margin="10,5,0,0"
+                  Foreground="White"
+                  Expanded="custSentimentIndex_Expanded"
+                  Header="Customer Sentiment Index">
+                    
+            <Border BorderBrush="Orange"
+                    Background="White"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Image Source="Resources/smile_happy.png"
+                               Height="50"
+                               Margin="10"/>
+                        <TextBlock Text="{Binding HappyCount}"
+                                   HorizontalAlignment="Center"
+                                   Foreground="Black"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <Image Source="Resources/smile_sad.png"
+                               Height="50"
+                               Margin="10"/>
+                        <TextBlock Text="{Binding SadCount}"
+                                   Foreground="Black"
+                                   HorizontalAlignment="Center"
+                                   />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Image Source="Resources/smile_confused.png"
+                               Height="50"
+                               Margin="10"/>
+                        <TextBlock Text="{Binding ConfusedCount}"
+                                   Foreground="Black"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Expander>
+    </Grid>
+</UserControl>

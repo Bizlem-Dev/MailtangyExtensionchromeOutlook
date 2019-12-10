@@ -1,0 +1,8 @@
+obj\Debug\Product.wixobj
+C:\Users\abhin\Desktop\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.msi
+C:\Users\abhin\Desktop\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.wixpdb
+obj\Debug\MailTangy_Setup.wixproj.BindContentsFileListnull.txt
+obj\Debug\MailTangy_Setup.wixproj.BindOutputsFileListnull.txt
+obj\Debug\MailTangy_Setup.wixproj.BindBuiltOutputsFileListnull.txt
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.msi
+E:\Freelancer Projects\Outlook Plugin\Mail Tangy\MailTangy\MailTangy_Setup\bin\Debug\MailTangy_Setup.wixpdb
